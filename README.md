@@ -6,4 +6,12 @@ How to run tests:
 
 `npm install`
 
-`npm run buttons` - buttons cases
+Buttons cases:
+`npm run buttons`
+
+Register form cases:
+`cd test_app
+npm install
+npm start //start React app in local host
+cd ..
+npm run form`
