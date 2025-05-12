@@ -9,13 +9,9 @@ How to run tests:
 Buttons cases:
 `npm run buttons`
 
-Register form cases:
-`cd test_app
-
-npm install
-
-npm start //start React app in local host
-
-cd ..
-
-npm run form`
+Register form cases:<br>
+`cd test_app<br>
+npm install<br>
+npm start //start React app in local host<br>
+cd ..<br>
+npm run form`<br>
