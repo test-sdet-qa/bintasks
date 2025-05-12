@@ -1,0 +1,131 @@
+import { mainUrl } from "../pages/form/helpers/url.page.js";
+import MainFormPage from "../pages/form/main.page.js";
+
+describe('Register cases', () => {
+    it('Register new user with valid data', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('testosome@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('testpassnew');
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.clickregforcountryUSAOption();
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Testcompany');
+        await MainFormPage.clickregfortermCheck();
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await MainFormPage.wayregformsgPopup('Registration successful!');
+        await MainFormPage.clickregformpopupcloseButton();
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+    });
+
+    it('Register new user with invalid email', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('.@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('testpassnew');
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.clickregforcountryUSAOption();
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Testcompany');
+        await MainFormPage.clickregfortermCheck();
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await MainFormPage.wayregformsgPopup('Invalid email');
+        await MainFormPage.clickregformpopupcloseButton();
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+    });
+
+    it('Register new user with invalid password', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('testosome@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('te');
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.clickregforcountryUSAOption();
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Testcompany');
+        await MainFormPage.clickregfortermCheck();
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await MainFormPage.wayregformsgPopup('Invalid password');
+        await MainFormPage.clickregformpopupcloseButton();
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+    });
+    it('Register new user with invalid company', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('testosome@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('testotesto');
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.clickregforcountryUSAOption();
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Te');
+        await MainFormPage.clickregfortermCheck();
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await MainFormPage.wayregformsgPopup('Invalid Company');
+        await MainFormPage.clickregformpopupcloseButton();
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+    });
+    it('Register new user with not clicking Terms checkbox', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('testosome@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('testotesto');
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.clickregforcountryUSAOption();
+        await MainFormPage.clickregforcountryField();
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Testcompany');
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await expect(MainFormPage.regformsgPopup).not.toBeDisplayed({ message: 'Msg is displayed in popup after click register button'});
+    });
+
+    it('Register new user with not selecting Country', async () => {
+        await browser.setTimeout({ implicit: 100});
+        await browser.url(mainUrl);
+        await browser.pause(1000);
+        await MainFormPage.wayregformmainTitle();
+        await MainFormPage.wayregforemailField();
+        await MainFormPage.addregforemailField('testosome@gmail.com');
+        await MainFormPage.wayregforpassField();
+        await MainFormPage.addregforpassField('testotesto');
+        await MainFormPage.wayregforcompanyField();
+        await MainFormPage.addregforcompanyField('Testcompany');
+        await MainFormPage.clickregfortermCheck();
+        await MainFormPage.clickregforregButton();
+        await browser.pause(1000);
+        await expect(MainFormPage.regformsgPopup).not.toBeDisplayed({ message: 'Msg is displayed in popup after click register button'});
+   
+});
+});
