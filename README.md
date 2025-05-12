@@ -11,7 +11,11 @@ Buttons cases:
 
 Register form cases:
 `cd test_app
+
 npm install
+
 npm start //start React app in local host
+
 cd ..
+
 npm run form`
